@@ -1,6 +1,6 @@
-# Vectorspace Explorer
+# Embeddings Visualiser
 
-Vectorspace Explorer turns word embeddings into an interactive 3D map.
+This visualiser turns word embeddings into an interactive 3D map.
 Words that are used in similar ways appear near each other, so you can search,
 hover, and move through language like a visible landscape.
 
