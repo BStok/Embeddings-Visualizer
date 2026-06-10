@@ -1,4 +1,5 @@
-# Embeddings Visualiser
+# Word2Vec Embeddings Visualiser
+<img width="1887" height="889" alt="image" src="https://github.com/user-attachments/assets/2c5a05e1-ccd0-410f-8c89-e29795ed3e6b" />
 
 This visualiser turns word embeddings into an interactive 3D map.
 Words that are used in similar ways appear near each other, so you can search,
