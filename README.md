@@ -10,7 +10,6 @@ hover, and move through language like a visible landscape.
 - Renders a large word2vec graph in the browser with WebGL.
 - Loads local graph assets: labels, positions, links, and manifest data.
 - Supports search, hover details, connected-word inspection, and camera navigation.
-- Modernized from an older React/Webpack codebase to Vite and React 18.
 
 ## Running Locally
 
