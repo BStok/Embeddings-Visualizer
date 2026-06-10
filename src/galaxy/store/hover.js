@@ -42,11 +42,11 @@ function createDefaultTemplate(viewModel) {
     top: viewModel.top - 35
   };
 
-  return (
-      <div style={style} className='node-hover-tooltip'>
-        {viewModel.name}
-        <span className='in-degree'>{viewModel.inDegree}</span>
-        <span className='out-degree'>{viewModel.outDegree}</span>
-      </div>
-    );
+  return React.createElement(
+    'div',
+    {style: style, className: 'node-hover-tooltip'},
+    viewModel.name,
+    React.createElement('span', {className: 'in-degree'}, viewModel.inDegree),
+    React.createElement('span', {className: 'out-degree'}, viewModel.outDegree)
+  );
 }

@@ -1,3 +1,4 @@
 export default {
-  dataUrl: '//anvaka.github.io/galactic-data/'
+  dataUrl: '/data/',
+  defaultGraphName: 'wiki-label'
 };

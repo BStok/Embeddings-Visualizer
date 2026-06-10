@@ -1,5 +1,7 @@
 import React from 'react';
-export default require('maco').template(noWebGL, React);
+import maco from '../legacy/maco.js';
+
+export default maco.template(noWebGL, React);
 
 function noWebGL() {
   return (

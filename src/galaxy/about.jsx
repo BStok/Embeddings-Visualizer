@@ -1,12 +1,12 @@
 import React from 'react';
-export default require('maco').template(about, React);
+import maco from '../legacy/maco.js';
+
+export default maco.template(about, React);
 
 function about() {
   return (
   <div  className='label about'>
-     <a className='reset-color'
-        target='_blank'
-        href="https://github.com/anvaka/pm/tree/master/about#software-galaxies-documentation">About...</a>
+     <span>Word2VEC Visualiser</span>
   </div>
   );
 }

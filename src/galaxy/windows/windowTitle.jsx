@@ -1,10 +1,10 @@
 import React from 'react';
 import resource from '../utils/resources.js';
+import maco from '../../legacy/maco.js';
 
-var maco = require('maco');
 registerDataTemplates();
 
-module.exports = maco.template(windowTitle, React);
+export default maco.template(windowTitle, React);
 
 var ContentControl = maco(contentControl, React);
 

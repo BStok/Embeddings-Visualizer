@@ -1,7 +1,8 @@
 import React from 'react';
 import formatNumber from '../utils/formatNumber.js';
+import maco from '../../legacy/maco.js';
 
-module.exports = require('maco').template(windowTitle, React);
+export default maco.template(windowTitle, React);
 
 function windowTitle(props) {
   var item = props.viewModel;

@@ -4,8 +4,9 @@
  */
 import appEvents from './service/appEvents.js';
 import React from 'react';
+import maco from '../legacy/maco.js';
 
-module.exports = require('maco')(steeringIndicator, React);
+export default maco(steeringIndicator, React);
 
 function steeringIndicator(x) {
   var showSteeringMode = false;

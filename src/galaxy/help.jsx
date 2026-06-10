@@ -9,8 +9,9 @@
 import React from 'react';
 import appEvents from './service/appEvents.js';
 import Key from './utils/key.js';
+import maco from '../legacy/maco.js';
 
-export default require('maco')(help, React);
+export default maco(help, React);
 
 var helpWasShown = false;
 
@@ -35,7 +36,7 @@ function help(x) {
 
     return (
         <div className='navigation-help'>
-          <h3>Spaceship operating manual</h3>
+          <h3>Operating Manual</h3>
             <table><tbody>
       <tr>
         <td colSpan="2"><code className='important-key'>mouse wheel</code></td>

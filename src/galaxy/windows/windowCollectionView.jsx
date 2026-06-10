@@ -4,8 +4,9 @@
 import React from 'react';
 import NodeListView from './nodeListView.jsx';
 import windowCollectionModel from './windowCollectionModel.js';
+import maco from '../../legacy/maco.js';
 
-module.exports = require('maco')(windowCollectionView, React);
+export default maco(windowCollectionView, React);
 
 function windowCollectionView(x) {
   x.render = function () {

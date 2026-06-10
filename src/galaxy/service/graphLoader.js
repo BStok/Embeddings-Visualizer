@@ -5,8 +5,7 @@
  * manifest.json - declares where the last version of the graph is stored.
  * positions.bin - a binary file of int32 trpilets. Each triplet defines
  *   node position in 3d space. Index of triplet is considered as node id.
- * links.bin - a sequence of edges. Read https://github.com/anvaka/ngraph.tobinary#linksbin-format
- *   for more information about its structure.
+ * links.bin - a compact sequence of edge ids.
  * labels.json - array of node names. Position of a label in the array corresponds
  *   to the triplet index.
  *
@@ -22,7 +21,6 @@ import createGraph from './graph.js';
 import appEvents from './appEvents.js';
 import appConfig from '../native/appConfig.js';
 import asyncFor from 'rafor';
-import Promise from 'bluebird';
 
 export default loadGraph;
 

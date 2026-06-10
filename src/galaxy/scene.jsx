@@ -1,5 +1,4 @@
 import React from 'react';
-import {findDOMNode} from 'react-dom';
 import HoverInfo from './hoverInfo.jsx';
 import NodeDetails from './nodeDetails/nodeDetailsView.jsx';
 
@@ -14,8 +13,11 @@ import createNativeRenderer from './native/renderer.js';
 import createKeyboardBindings from './native/sceneKeyboardBinding.js';
 
 import appEvents from './service/appEvents.js';
-var webglEnabled = require('webgl-enabled')();
-module.exports = require('maco')(scene, React);
+import webglEnabledFactory from 'webgl-enabled';
+import maco from '../legacy/maco.js';
+
+var webglEnabled = webglEnabledFactory();
+export default maco(scene, React);
 
 function scene(x) {
   var nativeRenderer, keyboard;
@@ -28,7 +30,7 @@ function scene(x) {
 
     return (
       <div>
-        <div ref='graphContainer' className='graph-full-size'/>
+        <div ref={setGraphContainer} className='graph-full-size'/>
         <HoverInfo />
         <NodeDetails />
         <SteeringIndicator />
@@ -42,12 +44,16 @@ function scene(x) {
 
   x.componentDidMount = function() {
     if (!webglEnabled) return;
-    var container = findDOMNode(x.refs.graphContainer);
+    var container = x.graphContainer;
     nativeRenderer = createNativeRenderer(container);
     keyboard = createKeyboardBindings(container);
     delegateClickHandler = container.parentNode;
     delegateClickHandler.addEventListener('click', handleDelegateClick);
   };
+
+  function setGraphContainer(container) {
+    x.graphContainer = container;
+  }
 
   x.componentWillUnmount = function() {
     if (nativeRenderer) nativeRenderer.destroy();

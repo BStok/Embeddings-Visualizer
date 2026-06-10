@@ -2,8 +2,9 @@ import React from 'react';
 import detailModel from './nodeDetailsStore.js';
 import specialNodeDetails from './templates/all.js';
 import scene from '../store/scene.js';
+import maco from '../../legacy/maco.js';
 
-module.exports = require('maco')(detailedNodeView, React);
+export default maco(detailedNodeView, React);
 
 function detailedNodeView(x) {
   x.render = function () {

@@ -2,8 +2,10 @@ import React from 'react';
 import LoadingIndicator from './loadingIndicator.jsx';
 import Scene from './scene.jsx';
 import appEvents from './service/appEvents.js';
+import config from '../config.js';
+import maco from '../legacy/maco.js';
 
-module.exports = require('maco')(galaxyPage, React);
+export default maco(galaxyPage, React);
 
 function galaxyPage(x) {
   var currentPath;
@@ -22,11 +24,22 @@ function galaxyPage(x) {
   };
 
   function loadGraphIfRouteChanged() {
-    var routeChanged = x.props.params.name !== currentPath;
+    var graphName = getRequestedGraphName();
+    var routeChanged = graphName !== currentPath;
     if (routeChanged) {
-      currentPath = x.props.params.name;
+      currentPath = graphName;
       appEvents.downloadGraphRequested.fire(currentPath);
     }
     appEvents.queryChanged.fire();
+  }
+
+  function getRequestedGraphName() {
+    var pathMatch = window.location.pathname.match(/\/galaxy\/([^/?#]+)/);
+    if (pathMatch) return decodeURIComponent(pathMatch[1]);
+
+    var hashMatch = window.location.hash.match(/#\/galaxy\/([^/?#]+)/);
+    if (hashMatch) return decodeURIComponent(hashMatch[1]);
+
+    return config.defaultGraphName;
   }
 }

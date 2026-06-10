@@ -1,7 +1,8 @@
 import React from 'react';
 import searchBoxModel from './searchBoxModel.js';
+import maco from '../../legacy/maco.js';
 
-module.exports = require('maco')(searchBar, React);
+export default maco(searchBar, React);
 
 function searchBar(x) {
   x.render = function () {
@@ -11,12 +12,12 @@ function searchBar(x) {
           <form className='search-form' role='search' onSubmit={runSubmit}>
             <div className='input-group'>
               <input type='text'
-                ref='searchText'
+                ref={setSearchText}
                 className='form-control no-shadow' placeholder='enter a search term'
                 onChange={runSearch}/>
                 <span className='input-group-btn'>
                   <button className='btn' tabIndex='-1' type='button'>
-                    <span className='glyphicon glyphicon-search'></span>
+                    Search
                   </button>
                 </span>
             </div>
@@ -31,8 +32,12 @@ function searchBar(x) {
   }
 
   function runSubmit(e) {
-    var searchText = React.findDOMNode(x.refs.searchText).value;
+    var searchText = x.searchText.value;
     searchBoxModel.submit(searchText);
     e.preventDefault();
+  }
+
+  function setSearchText(input) {
+    x.searchText = input;
   }
 }

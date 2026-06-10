@@ -4,11 +4,11 @@
  * managed by windowCollectionView
  */
 import React from 'react';
-import ReactList from 'react-list';
 import WindowTitle from './windowTitle.jsx';
 import NodeInfoRow from './nodeInfoRow.jsx';
+import maco from '../../legacy/maco.js';
 
-module.exports = require('maco')(nodeListView, React);
+export default maco(nodeListView, React);
 var windowId = 0;
 
 function nodeListView(x) {
@@ -34,23 +34,15 @@ function nodeListView(x) {
       </div>
     );
 
-    function renderItem(idx, key) {
-      var vm = items[idx];
-      return <NodeInfoRow key={key} viewModel={vm} />;
-    }
-
-    function getHeight() {
-      // FIXME: Hardcoding is not good.
-      return 20;
-    }
-
     function content(items) {
       if (items.length > 0) {
-        return <ReactList itemRenderer={renderItem}
-                  length={items.length}
-                  itemSizeGetter={getHeight}
-                  type='variable'
-                  key={id}/>;
+        return (
+          <div key={id}>
+            {items.map(function(item) {
+              return <NodeInfoRow key={item.id} viewModel={item} />;
+            })}
+          </div>
+        );
       } else {
         return null;
       }

@@ -1,6 +1,7 @@
 import React from 'react';
+import maco from '../../../legacy/maco.js';
 
-export default require('maco').template(template, React);
+export default maco.template(template, React);
 
 function template(props) {
   var model = props.model;
